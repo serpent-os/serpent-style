@@ -38,6 +38,18 @@ if [[ ! -d source/ ]]; then
     noisyFail "${MSG}"
 fi
 
+command -v iconv 2>&1 > /dev/null
+if [[ ! $? -eq 0 ]]; then
+    MSG="'iconv' character set conversion tool not found?"
+    noisyFail "${MSG}"
+fi
+
+command -v xargs 2>&1 > /dev/null
+if [[ ! $? -eq 0 ]]; then
+    MSG="'xargs' utility (part of GNU findutils) not found?"
+    noisyFail "${MSG}"
+fi
+
 D_FILES=""
 
 # Autoformat the code.
@@ -45,6 +57,7 @@ command -v dfmt 2>&1 > /dev/null
 if [[ $? -eq 0 ]]; then
     D_FILES="$(find source/ -name '*.d')"
     if [[ ${D_FILES} != "" ]]; then
+        echo "${D_FILES}" | xargs -n1 iconv --verbose -t utf8 > /dev/null || noisyFail "Failed to convert source/*.d to utf-8"
         dfmt -i "${D_FILES}"
     else
         MSG="No '*.d' Dlang source files found in ${PWD}/source/ directory?"
