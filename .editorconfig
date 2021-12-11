@@ -1,7 +1,9 @@
+# Serpent OS uses utf-8 exclusively for source code
 [*]
-trim_trailing_whitespace = true
+charset = utf-8
 end_of_line = lf
 insert_final_newline = true
+trim_trailing_whitespace = true
 tab_width = 8
 
 [*.d]
