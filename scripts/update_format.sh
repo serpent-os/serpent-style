@@ -3,21 +3,39 @@
 # Copyright © 2021 Serpent OS developers
 #
 
-if [[ ! -d .git/ ]]; then
-    echo "ERROR: ${PWD} does not contain a .git/ directory?"
-    echo "       The script needs to be run from the root of a git repository."
+function noisyFail () {
+    if [[ -z "$1" ]]; then
+       echo ""
+       echo "\033[1;31mERROR:\033[0;\033[1;  No message parameter specified for noisyFail?\033[0;"
+       echo ""
+       exit 1
+    fi
+    # set up terminal colours
+    BOLDRED="\033[1;31m"
+    BOLD="\033[1m"
+    RESET="\033[0m"
+    ERRMSG="${BOLDRED}ERROR:${RESET}${BOLD}  ${1}${RESET}"
+    echo ""
+    echo -e "${ERRMSG}"
+    echo ""
     exit 1
+}
+
+if [[ ! -d .git/ ]]; then
+    MSG="${PWD} does not contain a .git/ directory?\n\
+        - please ensure that this script is run from the root of a git repository."
+    noisyFail "${MSG}"
 fi
 
 if [[ ! -d scripts/ ]]; then
-    echo "ERROR: No './scripts/' directory found?"
-    echo "       Please ensure that this script is run from the root of a git repository."
-    exit 1
+    MSG="${PWD} does not contain a scripts/ directory?\n\
+        - please ensure that this script is run from the root of a git repository."
+    noisyFail "${MSG}"
 fi
 
 if [[ ! -d source/ ]]; then
-    echo "ERROR: No './source/' directory found?"
-    exit 1
+    MSG="${PWD} does not contain a source/ directory?"
+    noisyFail "${MSG}"
 fi
 
 D_FILES=""
@@ -29,14 +47,14 @@ if [[ $? -eq 0 ]]; then
     if [[ ${D_FILES} != "" ]]; then
         dfmt -i "${D_FILES}"
     else
-        echo "ERROR: No *.d files found in ./source/ ?"
-        exit 1
+        MSG="No '*.d' Dlang source files found in ${PWD}/source/ directory?"
+        noisyFail "${MSG}"
     fi
 else
-    echo "ERROR: dfmt code formatting tool not found in your PATH?"
-    echo "       Please install dfmt and rerun scripts/update_format.sh"
-    echo "       (git clone https://github.com/dlang-community/dfmt)"
-    exit 1
+    MSG="'dfmt' code formatting tool not found in your \$PATH?\n\
+        - please install 'dfmt' and rerun 'scripts/update_format.sh'\n\
+        (git clone https://github.com/dlang-community/dfmt)."
+    noisyFail "${MSG}"
 fi
 
 # Check we have no typos.
@@ -44,9 +62,9 @@ command -v codespell 2>&1 >/dev/null
 if [[ $? -eq 0 ]]; then
     codespell "${D_FILES}"
 else
-    echo "ERROR: codespell not found?"
-    echo "       Please install codespell!"
-    exit 1
+    MSG="'codespell' spell checking tool not found in your \$PATH?\n\
+        - please install 'codespell'."
+    noisyFail "${MSG}"
 fi
 
 # Nuke .orig files from modification
