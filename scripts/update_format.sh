@@ -6,7 +6,7 @@
 function noisyFail () {
     if [[ -z "$1" ]]; then
        echo ""
-       echo "\033[1;31mERROR:\033[0;\033[1;  No message parameter specified for noisyFail?\033[0;"
+       echo "\033[1;31mERROR:\033[0m\033[1m  No message parameter specified for noisyFail?\033[0m"
        echo ""
        exit 1
     fi
