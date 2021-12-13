@@ -1,10 +1,17 @@
 # Serpent OS default code style
 
-If the current repository contains the present FORMATTING.md file, it means that it is governed by
-the Serpent OS reference template for code style.
+The present repository is designed to be added to each Dlang project as a git submodule via the
+command:
 
-The contents of said reference template is designed in such a way that it can be copied verbatim
-into the root of any Serpent OS project under SCM control (will almost always be `git`).
+`git submodule add git@gitlab.com:serpent-os/core/code-style.git`
+
+The presence of this submodule implies that the superproject is governed by the Serpent OS
+reference template for Dlang code style.
+
+## setup.sh
+
+Running code-style/setup.sh from the superproject root will symlink the `.editorconfig` into the
+root directory and symlink the update-format.sh script to scripts/update-format.sh.
 
 ## `.editorconfig` based
 
@@ -15,7 +22,7 @@ code style across projects and a preemptive attempt to avoid code-style bikeshed
 ## `dfmt` required
 
 It should be noted that the present project expects a working copy of `dfmt` to be present in the
-user's `$PATH` environment variable -- if `dfmt` is not present, the `scripts/update_format.sh`
+user's `$PATH` environment variable -- if `dfmt` is not present, the `scripts/update-format.sh`
 script will exit noisily with an appropriate pointer.
 
 ## `codespell` required
