@@ -8,9 +8,9 @@ command:
 The presence of this submodule implies that the superproject is governed by the Serpent OS
 reference template for Dlang code style.
 
-## setup.sh
+## `setup.sh`
 
-Running code-style/setup.sh from the superproject root will symlink the `.editorconfig` into the
+Running `code-style/setup.sh` from the superproject root will symlink the `.editorconfig` into the
 root directory and symlink the update-format.sh script to scripts/update-format.sh.
 
 ## `.editorconfig` based
