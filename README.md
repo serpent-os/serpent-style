@@ -12,11 +12,12 @@ reference template for Dlang code style.
 
 Running `code-style/setup.sh` from the superproject root will do the following:
 
-- symlink the `code-style/.editorconfig` into the root directory for proper .editorconfig support
+- symlink the `code-style/.editorconfig` into the root directory for proper
+  [EditorConfig](https://editorconfig.org/) support
 - symlink the `code-style/update-format.sh` script to `scripts/update-format.sh`
 - create `scripts/` and `source/` folders if they don't exist
 - remove the older `scripts/update_format.sh` script
-- run the new `scripts/update-format.sh` script once and thus convert the superproject to 
+- run the new `scripts/update-format.sh` script once and thus convert the superproject
   to the new code-style standards
 
 ## `.editorconfig` based
@@ -30,6 +31,8 @@ code style across projects and a preemptive attempt to avoid code-style bikeshed
 It should be noted that the present project expects a working copy of `dfmt` to be present in the
 user's `$PATH` environment variable -- if `dfmt` is not present, the `scripts/update-format.sh`
 script will exit noisily with an appropriate pointer.
+
+`dfmt` depends on and enforces the included `.editorconfig` configuration.
 
 ## `codespell` required
 
