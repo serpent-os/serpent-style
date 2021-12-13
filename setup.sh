@@ -7,7 +7,9 @@
 if [[ -f code-style/update-format.sh && -d .git/ ]];then
     mkdir -pv scripts/ source/
     git rm scripts/update_format.sh
-    ln -sfv code-style/update-format.sh scripts/update-format.sh
+    pusd scripts
+    ln -sfv ../code-style/update-format.sh update-format.sh
+    popd
     ln -sfv code-style/.editorconfig .editorconfig
     source code-style/update-format.sh
 else
