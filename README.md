@@ -10,8 +10,14 @@ reference template for Dlang code style.
 
 ## `setup.sh`
 
-Running `code-style/setup.sh` from the superproject root will symlink the `.editorconfig` into the
-root directory and symlink the update-format.sh script to scripts/update-format.sh.
+Running `code-style/setup.sh` from the superproject root will do the following:
+
+- symlink the `code-style/.editorconfig` into the root directory for proper .editorconfig support
+- symlink the `code-style/update-format.sh` script to `scripts/update-format.sh`
+- create `scripts/` and `source/` folders if they don't exist
+- remove the older `scripts/update_format.sh` script
+- run the new `scripts/update-format.sh` script once and thus convert the superproject to 
+  to the new code-style standards
 
 ## `.editorconfig` based
 
