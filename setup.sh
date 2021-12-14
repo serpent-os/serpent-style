@@ -6,7 +6,8 @@
 # attempt to ensure that we're run from the superproject root
 if [[ -f code-style/update-format.sh && -d .git/ ]];then
     mkdir -pv scripts/ source/
-    git rm scripts/update_format.sh
+    #
+    git rm --ignore-unmatch scripts/update_format.sh
     pushd scripts
     ln -sfv ../code-style/update-format.sh update-format.sh
     popd
