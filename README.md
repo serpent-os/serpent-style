@@ -3,7 +3,7 @@
 The present repository is designed to be added to each Dlang project as a git submodule via the
 command:
 
-`git submodule add git@gitlab.com:serpent-os/core/code-style.git`
+`git submodule add https://gitlab.com/serpent-os/core/code-style.git`
 
 The presence of this submodule implies that the superproject is governed by the Serpent OS
 reference template for Dlang code style.

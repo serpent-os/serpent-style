@@ -82,9 +82,12 @@ function autoFormat ()
     D_FILES="$(find source/ -name '*.d')"
 
     if [[ ${D_FILES} != "" ]]; then
-        echo "${D_FILES}" | xargs -n1 iconv --verbose -t utf8 > /dev/null || noisyFail "Failed to convert source/*.d to utf-8? Please encode source/*.d to utf-8."
-        dfmt -i "${D_FILES}"
-        codespell "${D_FILES}"
+        echo "Testing that Dlang files can be converted to utf-8..."
+        echo "${D_FILES}" | xargs -n1 --verbose iconv -t utf8 > /dev/null || noisyFail "Failed to convert source/*.d to utf-8? Please encode source/*.d to utf-8."
+        echo "Running Dlang files through 'dfmt'..."
+        echo "${D_FILES}" | xargs -n1 --verbose dfmt -i
+        echo "Running Dlang files through 'codespell'..."
+        echo "${D_FILES}" | xargs -n1 --verbose codespell
     else
         MSG="No '*.d' Dlang source files found in ${PWD}/source/ directory?"
         noisyFail "${MSG}"
