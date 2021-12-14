@@ -6,12 +6,12 @@
 # attempt to ensure that we're run from the superproject root
 if [[ -f code-style/update-format.sh && -d .git/ ]];then
     mkdir -pv scripts/ source/
-    #
-    git rm --ignore-unmatch scripts/update_format.sh
+    ln -sfv code-style/.editorconfig .editorconfig
     pushd scripts
     ln -sfv ../code-style/update-format.sh update-format.sh
     popd
-    ln -sfv code-style/.editorconfig .editorconfig
+    # Remove legacy update_format.sh as a precaution
+    git rm --ignore-unmatch scripts/update_format.sh
     source code-style/update-format.sh
 else
     echo "Please run 'code-style/setup.sh' from the root of a Serpent OS git project."
