@@ -16,7 +16,7 @@ Running `code-style/setup.sh` from the superproject root will do the following:
   [EditorConfig](https://editorconfig.org/) support
 - symlink the `code-style/update-format.sh` script to `scripts/update-format.sh`
 - create `scripts/` and `source/` folders if they don't exist
-- remove the older `scripts/update_format.sh` script
+- remove the older `scripts/update_format.sh` script if it exists
 - run the new `scripts/update-format.sh` script once and thus convert the superproject
   to the new code-style standards
 
