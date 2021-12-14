@@ -87,7 +87,7 @@ function autoFormat ()
         echo "Running Dlang files through 'dfmt'..."
         echo "${D_FILES}" | xargs -n1 --verbose dfmt -i
         echo "Running Dlang files through 'codespell'..."
-        echo "${D_FILES}" | xargs -n1 --verbose codespell
+        codespell "${D_FILES}"
     else
         MSG="No '*.d' Dlang source files found in ${PWD}/source/ directory?"
         noisyFail "${MSG}"
