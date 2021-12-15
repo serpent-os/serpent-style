@@ -48,3 +48,24 @@ exit noisily if it is not found.
 
 To learn more about `codespell`, visit
 [https://pypi.org/project/codespell/](https://pypi.org/project/codespell/).
+
+## A note on comments
+
+As `dfmt` cannot parse comments, it is necessary to outline the expected format here. The primary
+reason we want consistent comments is readability and thus maintainability.
+
+The expected format is as follows:
+
+```D
+/**
+ * This is a multi-line documentation comment.
+ *
+ * Multi-line documentation comments are expected to contain properly punctuated sentences.
+ *
+ * Single-line documentation comments such as /** foo bar baz */ are not allowed.
+ */
+
+ /* This is a single-line comment without punctuation */
+
+ // double-dash comments are only used to flag FIXME: comments and are generally frowned upon.
+```
