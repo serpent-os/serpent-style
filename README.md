@@ -67,5 +67,5 @@ The expected format is as follows:
 
  /* This is a single-line comment without punctuation */
 
- // double-dash comments are only used to flag FIXME: comments and are generally frowned upon.
+ // double-slash comments are only used to flag FIXME: comments and are generally frowned upon.
 ```
