@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Copyright © 2021 Serpent OS Developers
+# Copyright © 2021-2022 Serpent OS Developers
 #
 
 # attempt to ensure that we're run from the superproject root
