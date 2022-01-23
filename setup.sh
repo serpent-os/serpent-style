@@ -3,7 +3,6 @@
 # Copyright © 2021-2022 Serpent OS Developers
 #
 set -e
-set -x
 
 DeprecatedFiles=("scripts/update_format.sh")
 LinkFiles=(".editorconfig" "dscanner.ini")
