@@ -23,6 +23,7 @@ test -e .git || failMsg "Please run from the root of a git project"
 for depr in ${DeprecatedFiles[@]}; do
 	if [[ -e "${depr}" ]]; then
 		echo "Removing deprecated asset: ${depr}"
+		git rm "${depr}"
 		NukedAny=1
 	fi
 done
