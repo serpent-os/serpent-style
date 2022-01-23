@@ -1,12 +1,11 @@
 /* SPDX-License-Identifier: Zlib */
 
 /**
- * FIXME: Module Name
+ * Module Name
  *
- * FIXME: Description
+ * Module Description
  *
- * Authors: FIXME
+ * Authors: © 2020-2022 Serpent OS Developers
  * License: ZLib
- * Copyright: © 2020-2022 Serpent OS Developers
  */
 module FIXME;
