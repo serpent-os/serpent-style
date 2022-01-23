@@ -2,20 +2,39 @@
 #
 # Copyright © 2021-2022 Serpent OS Developers
 #
+set -e
+set -x
 
-# attempt to ensure that we're run from the superproject root
-if [[ -f code-style/update-format.sh && -d .git/ ]];then
-    mkdir -pv scripts/ source/
-    ln -sfv code-style/.editorconfig .editorconfig
-    pushd scripts
-    ln -sfv ../code-style/update-format.sh update-format.sh
-    popd
-    # Remove legacy update_format.sh as a precaution
-    git rm --ignore-unmatch scripts/update_format.sh
-    source code-style/update-format.sh
-else
-    echo "Please run 'code-style/setup.sh' from the root of a Serpent OS git project."
-    exit 1
+DeprecatedFiles=("scripts/update_format.sh")
+LinkFiles=(".editorconfig" "dscanner.ini")
+NukedAny=0
+
+function failMsg()
+{
+	echo $*
+	exit 1
+}
+
+[[ -z $(git status --untracked-files=no --porcelain .) ]] || failMsg "Ensure git tree is clean before running this script"
+test -e .git || failMsg "Please run from the root of a git project"
+
+
+# Deprecate old scripts
+for depr in ${DeprecatedFiles[@]}; do
+	if [[ -e "${depr}" ]]; then
+		echo "Removing deprecated asset: ${depr}"
+		NukedAny=1
+	fi
+done
+
+if [[ "${NukedAny}" == "1" ]]; then
+	echo "Commiting changes..."
+	git commit -m "code-style: Removing deprecated scripts"
 fi
 
+# Forcibly link the files in
+for link in ${LinkFiles[@]}; do
+	ln -svf "code-style/${link}" "."
+done
 
+echo "Make sure you add any new links and commit them"
