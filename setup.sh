@@ -4,6 +4,7 @@
 #
 set -e
 
+CopyFiles=("LICENSE")
 DeprecatedFiles=("scripts/update_format.sh")
 LinkFiles=(".editorconfig" "dscanner.ini")
 NukedAny=0
@@ -37,4 +38,9 @@ for link in ${LinkFiles[@]}; do
 	ln -svf "code-style/${link}" "."
 done
 
-echo "Make sure you add any new links and commit them"
+# Forcibly copy the files in
+for file in ${CopyFiles[@]}; do
+    cp -vf "code-style/${file}" "."
+done
+
+echo "Make sure to 'git add' any new links/files added by code-style/ and commit them"
