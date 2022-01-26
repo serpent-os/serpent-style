@@ -31,7 +31,7 @@ max_line_length = 120
 # The meson project itself uses these settings
 [*.build]
 indent_style = space
-indent_size = 2
+indent_size = 4
 
 # Useful for README.md etc.
 [*.md]
@@ -53,14 +53,14 @@ indent_size = 4
 indent_style = tab
 
 # Serpent OS stone.yml
-# Based on best practices from projects using yaml and results in less storage space
-# Note that we prefer lists not being indented (visual aid + space saving)
 [stone.yml]
 indent_style = space
-indent_size = 2
+indent_size = 4
 
-# TODO: C?
+[*.{c,h}]
+indent_style = space
+indent_size = 8
 
-# TODO: JSON?
+# TODO: generic JSON?
 
-# TODO: YAML?
+# TODO: generic YAML?
