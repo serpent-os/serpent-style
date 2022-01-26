@@ -1,11 +1,20 @@
+# EditorConfig configuration for Serpent OS projects
+# https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
 # Serpent OS uses utf-8 exclusively for source code
 [*]
 charset = utf-8
 end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
+# make it easier to distinguish between spaces and tabs ootb
+# (using a default spaces indent of 2-4 for the kind of code we care about)
 tab_width = 8
 
+# Dlang
 [*.d]
 dfmt_align_switch_statements = true
 dfmt_brace_style = allman
@@ -15,27 +24,43 @@ dfmt_soft_max_line_length = 80
 dfmt_space_after_cast = true
 dfmt_space_after_keywords = true
 dfmt_split_operator_at_line_end = false
-end_of_line = lf
-indent_size = 4
 indent_style = space
-insert_final_newline = true
+indent_size = 4
 max_line_length = 120
-tab_width = 8
+
+# The meson project itself uses these settings
+[*.build]
+indent_style = space
+indent_size = 2
+
+# Useful for README.md etc.
+[*.md]
+indent_style = space
+indent_size = 4
+# Markdown specifies that two spaces at the end of a line counts as a linebreak
+trim_trailing_whitespace = false
+
+# Python upstream mandates these settings by default in PEP 8
+[*.py]
+indent_style = space
+indent_size = 4
 
 [*.sh]
-indent_size = 4
 indent_style = space
-tab_width = 4
+indent_size = 4
 
 [makefile]
-indent_size = 4
 indent_style = tab
-tab_width = 4
+
+# Serpent OS stone.yml
+# Based on best practices from projects using yaml and results in less storage space
+# Note that we prefer lists not being indented (visual aid + space saving)
+[stone.yml]
+indent_style = space
+indent_size = 2
 
 # TODO: C?
 
 # TODO: JSON?
-
-# TODO: Markdown?
 
 # TODO: YAML?
