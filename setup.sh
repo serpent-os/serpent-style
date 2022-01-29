@@ -30,17 +30,17 @@ done
 
 if [[ "${NukedAny}" == "1" ]]; then
 	echo "Commiting changes..."
-	git commit -m "code-style: Removing deprecated scripts"
+	git commit -m "serpent-style: Removing deprecated scripts"
 fi
 
 # Forcibly link the files in
 for link in ${LinkFiles[@]}; do
-	ln -svf "code-style/${link}" "."
+	ln -svf "serpent-style/${link}" "."
 done
 
 # Forcibly copy the files in
 for file in ${CopyFiles[@]}; do
-    cp -vf "code-style/${file}" "."
+    cp -vf "serpent-style/${file}" "."
 done
 
-echo "Make sure to 'git add' any new links/files added by code-style/ and commit them"
+echo "Make sure to 'git add' any new links/files added by serpent-style/ and commit them"
