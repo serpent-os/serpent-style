@@ -30,12 +30,6 @@ function checkDirPrerequisites ()
         noisyFail "${MSG}"
     fi
 
-    if [[ ! -d scripts/ ]]; then
-        MSG="${PWD} does not contain a scripts/ directory?\n\
-        - please ensure that this script is run from the root of a git repository."
-        noisyFail "${MSG}"
-    fi
-
     if [[ ! -d source/ ]]; then
         MSG="${PWD} does not contain a source/ directory?"
         noisyFail "${MSG}"
