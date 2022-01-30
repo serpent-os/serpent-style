@@ -63,4 +63,6 @@ indent_size = 8
 
 # TODO: generic JSON?
 
-# TODO: generic YAML?
+[*.yml]
+indent_style = space
+indent_size = 4
