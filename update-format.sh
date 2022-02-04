@@ -73,7 +73,7 @@ D_FILES=""
 # Autoformat the code and check spelling
 function autoFormat ()
 {
-    D_FILES="$(find source/ -name '*.d')"
+    D_FILES="$(find source/ tests/ -name '*.d')"
 
     if [[ ${D_FILES} != "" ]]; then
         echo "Testing that Dlang files can be converted to utf-8..."
