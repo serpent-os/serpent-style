@@ -73,17 +73,22 @@ D_FILES=""
 # Autoformat the code and check spelling
 function autoFormat ()
 {
-    D_FILES="$(find source/ tests/ -name '*.d')"
+    local D_FILES=""
+    if [[ -d tests/ ]]; then
+        D_FILES="$(find source/ tests/ -name '*.d' -type f)"
+    else
+        D_FILES="$(find source/ -name '*.d' -type -f)"
+    fi
 
     if [[ ${D_FILES} != "" ]]; then
         echo "Testing that Dlang files can be converted to utf-8..."
-        echo "${D_FILES}" | xargs -n1 --verbose iconv -t utf8 > /dev/null || noisyFail "Failed to convert source/*.d to utf-8? Please encode source/*.d to utf-8."
+        echo "${D_FILES}" | xargs -n1 --verbose iconv -t utf8 > /dev/null || noisyFail "Failed to convert *.d files to utf-8? Please encode *.d files to utf-8."
         echo "Running Dlang files through 'dfmt'..."
         echo "${D_FILES}" | xargs -n1 --verbose dfmt -i
         echo "Running Dlang files through 'codespell'..."
         codespell "${D_FILES}"
     else
-        MSG="No '*.d' Dlang source files found in ${PWD}/source/ directory?"
+        MSG="No '*.d' Dlang source files found in ${PWD}/source/ or ${PWD}/tests/) ?"
         noisyFail "${MSG}"
     fi
 }
