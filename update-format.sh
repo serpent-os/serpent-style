@@ -75,12 +75,12 @@ function autoFormat ()
 {
     local D_FILES=""
     if [[ -d tests/ ]]; then
-        D_FILES="$(find source/ tests/ -name '*.d' -type f)"
+        D_FILES="$(find source/ tests/ -name '*.d' -type f 2>/dev/null)"
     else
-        D_FILES="$(find source/ -name '*.d' -type -f)"
+        D_FILES="$(find source/ -name '*.d' -type f 2>/dev/null)"
     fi
 
-    if [[ ${D_FILES} != "" ]]; then
+    if [[ -n "${D_FILES}" ]]; then
         echo "Testing that Dlang files can be converted to utf-8..."
         echo "${D_FILES}" | xargs -n1 --verbose iconv -t utf8 > /dev/null || noisyFail "Failed to convert *.d files to utf-8? Please encode *.d files to utf-8."
         echo "Running Dlang files through 'dfmt'..."
