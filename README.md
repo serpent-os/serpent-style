@@ -26,7 +26,7 @@ The current repository contains an `.editorconfig` file intended to be parsed by
 the `dfmt` Dlang source code formatting tool.
 
 This is an attempt at enforcing a consistent source code style across projects and a preemptive
-attempt at avoiding serpent-style bikeshedding discussions.
+attempt at avoiding code style bikeshedding discussions.
 
 To learn more about EditorConfig, visit [https://editorconfig.org](https://editorconfig.org).
 
