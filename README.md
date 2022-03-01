@@ -3,22 +3,22 @@
 The present repository is designed to be added to each Dlang project as a git submodule via the
 command:
 
-`git submodule add https://gitlab.com/serpent-os/core/code-style.git`
+`git submodule add https://gitlab.com/serpent-os/core/serpent-style.git`
 
 The presence of this submodule implies that the superproject is governed by the Serpent OS
 reference template for Dlang code style.
 
 ## `setup.sh`
 
-Running `code-style/setup.sh` from the superproject root will do the following:
+Running `serpent-style/setup.sh` from the superproject root will do the following:
 
-- symlink the `code-style/.editorconfig` into the root directory for proper
+- symlink the `serpent-style/.editorconfig` into the root directory for proper
   [EditorConfig](https://editorconfig.org/) support
-- symlink the `code-style/update-format.sh` script to `scripts/update-format.sh`
+- symlink the `serpent-style/update-format.sh` script to `scripts/update-format.sh`
 - create `scripts/` and `source/` folders if they don't exist
 - remove the older `scripts/update_format.sh` script if it exists
 - run the new `scripts/update-format.sh` script once and thus convert the superproject
-  to the new code-style standards
+  to the new serpent-style standards
 
 ## EditorConfig based
 
@@ -26,7 +26,7 @@ The current repository contains an `.editorconfig` file intended to be parsed by
 the `dfmt` Dlang source code formatting tool.
 
 This is an attempt at enforcing a consistent source code style across projects and a preemptive
-attempt at avoiding code-style bikeshedding discussions.
+attempt at avoiding serpent-style bikeshedding discussions.
 
 To learn more about EditorConfig, visit [https://editorconfig.org](https://editorconfig.org).
 
