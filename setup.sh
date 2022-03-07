@@ -11,7 +11,7 @@ NukedAny=0
 
 function failMsg()
 {
-	echo $*
+	echo -e $*
 	exit 1
 }
 
@@ -30,7 +30,7 @@ done
 
 if [[ "${NukedAny}" == "1" ]]; then
 	echo "Commiting changes..."
-	git commit -S -s -m "serpent-style: Remove deprecated scripts"
+	git commit -S -s -m "serpent-style: Remove deprecated assets"
 fi
 
 # Forcibly link the files in
@@ -43,7 +43,7 @@ for file in ${CopyFiles[@]}; do
     cp -vf "serpent-style/${file}" "."
 done
 
-# Link pre-commit hook in
+# Link pre-commit hook in (using -r avoids dangling symlink)
 ln -rsvf serpent-style/git-pre-commit-hook.sh .git/hooks/pre-commit
 
 echo "Make sure to 'git add' any new links/files added by serpent-style/ and commit them"
