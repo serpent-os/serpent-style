@@ -41,6 +41,7 @@ function checkForTools ()
     local TOOLS=(
         grep
         gawk
+        xargs
     )
     local MISSING_TOOLS=""
     echo -e "\nChecking for tools used by serpent-style git pre-commit hook..."
@@ -71,9 +72,9 @@ function rejectForbiddenPatterns ()
 # we need this for exit status
 BEGIN { matches = 0 }
 
-print "Checking for illegal Dlang patterns...\n" 
+print "Checking for illegal Dlang patterns...\n"
 
-# Illegal patterns 
+# Illegal patterns
 # only match lines that are not commented out (we use 4 space indents)
 # each line of Dlang code is matched against all the patterns below in the order listed
 
@@ -82,7 +83,7 @@ print "Checking for illegal Dlang patterns...\n"
 
 # disallow buildPath (use join instead)
 /^[ ]*buildPath/ { print FILENAME ":" FNR ":" $0 ; matches += 1 }
-    
+
 # exit 1 on illegal patterns found
 END { exit (matches != 0) }
 ' \
@@ -94,4 +95,3 @@ END { exit (matches != 0) }
 
 # list of enabled functions
 checkForTools && rejectForbiddenPatterns
-
