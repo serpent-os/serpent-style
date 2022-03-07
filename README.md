@@ -15,18 +15,18 @@ Running `serpent-style/setup.sh` from the superproject root will do the followin
 - symlink the `serpent-style/.editorconfig` into the root directory for proper
   [EditorConfig](https://editorconfig.org/) support
 - symlink the `serpent-style/update-format.sh` script to `scripts/update-format.sh`
-- create `scripts/` and `source/` folders if they don't exist
 - remove the older `scripts/update_format.sh` script if it exists
 - run the new `scripts/update-format.sh` script once and thus convert the superproject
   to the new serpent-style standards
+- symlink the `serpent-style/git-pre-commit-hook.sh` to `.git/hook/pre-commit`
 
 ## EditorConfig based
 
 The current repository contains an `.editorconfig` file intended to be parsed by both editors and
 the `dfmt` Dlang source code formatting tool.
 
-This is an attempt at enforcing a consistent source code style across projects and a preemptive
-attempt at avoiding code style bikeshedding discussions.
+This is to enforce a consistent source code style across projects and a preemptive attempt at
+avoiding code style bikeshedding discussions.
 
 To learn more about EditorConfig, visit [https://editorconfig.org](https://editorconfig.org).
 
