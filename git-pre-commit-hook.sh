@@ -72,8 +72,6 @@ function rejectForbiddenPatterns ()
 # we need this for exit status
 BEGIN { matches = 0 }
 
-print "Checking for illegal Dlang patterns...\n"
-
 # Illegal patterns
 # only match lines that are not commented out (we use 4 space indents)
 # each line of Dlang code is matched against all the patterns below in the order listed
