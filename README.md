@@ -12,13 +12,11 @@ reference template for Dlang code style.
 
 Running `serpent-style/setup.sh` from the superproject root will do the following:
 
-- symlink the `serpent-style/.editorconfig` into the root directory for proper
-  [EditorConfig](https://editorconfig.org/) support
-- symlink the `serpent-style/update-format.sh` script to `scripts/update-format.sh`
+- symlink `serpent-style/.editorconfig` into the root directory for proper [EditorConfig](https://editorconfig.org/) support
+- symlink `serpent-style/git-pre-commit-hook.sh` to `.git/hook/pre-commit`
+- symlink `serpent-style/dscanner.ini` into teh root directory for proper [D-Scanner](https://github.com/dlang-community/D-Scanner) [LSP](https://microsoft.github.io/language-server-protocol/) support
 - remove the older `scripts/update_format.sh` script if it exists
-- run the new `scripts/update-format.sh` script once and thus convert the superproject
-  to the new serpent-style standards
-- symlink the `serpent-style/git-pre-commit-hook.sh` to `.git/hook/pre-commit`
+- run the new `serpent-style/update-format.sh` script once and thus convert the superproject to the new serpent-style standards
 
 ## EditorConfig based
 
@@ -62,10 +60,15 @@ The expected format is as follows:
  *
  * Multi-line documentation comments are expected to contain properly punctuated sentences.
  *
- * Single-line documentation comments such as /** foo bar baz */ are not allowed.
  */
 
- /* This is a single-line comment without punctuation */
+/**
+ * This is a single sentence documentation comment
+ */
 
- // double-slash comments are only used to flag FIXME: comments and are generally frowned upon.
+/** Single-line documentation comments such as this are frowned upon */
+
+/* This is a single-line comment without punctuation */
+
+// double-slash comments are only used to flag FIXME/TODO/etc. comments and are generally frowned upon.
 ```
