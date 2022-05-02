@@ -14,7 +14,7 @@ Running `serpent-style/setup.sh` from the superproject root will do the followin
 
 - symlink `serpent-style/.editorconfig` into the root directory for proper [EditorConfig](https://editorconfig.org/) support
 - symlink `serpent-style/git-pre-commit-hook.sh` to `.git/hook/pre-commit`
-- symlink `serpent-style/dscanner.ini` into teh root directory for proper [D-Scanner](https://github.com/dlang-community/D-Scanner) [LSP](https://microsoft.github.io/language-server-protocol/) support
+- symlink `serpent-style/dscanner.ini` into the root directory for proper [D-Scanner](https://github.com/dlang-community/D-Scanner) [LSP](https://microsoft.github.io/language-server-protocol/) support
 - remove the older `scripts/update_format.sh` script if it exists
 - run the new `serpent-style/update-format.sh` script once and thus convert the superproject to the new serpent-style standards
 
