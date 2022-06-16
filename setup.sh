@@ -44,6 +44,9 @@ for file in ${CopyFiles[@]}; do
 done
 
 # Link pre-commit hook in (using -r avoids dangling symlink)
+if [[ ! -d .git/hooks ]]; then
+    install -D -d -m 00755 .git/hooks
+fi
 ln -rsvf serpent-style/git-pre-commit-hook.sh .git/hooks/pre-commit
 
 echo "Make sure to 'git add' any new links/files added by serpent-style/ and commit them"
