@@ -39,8 +39,9 @@ function noisyFail ()
 function checkForTools ()
 {
     local TOOLS=(
-        grep
         gawk
+        grep
+        sed
         xargs
     )
     local MISSING_TOOLS=""
@@ -50,7 +51,7 @@ function checkForTools ()
         if [[ ! $? -eq 0 ]]; then
             MISSING_TOOLS+="  ${tool}\n"
         else
-            echo -e "'- found ${tool}..."
+            echo -e "'- found ${tool}"
         fi
     done
     if [[ ! -z "${MISSING_TOOLS}" ]]; then
@@ -66,13 +67,14 @@ function checkForTools ()
 
 # Ignore logging code, since it needs to be able to write{f,}ln
 # and ignore deleted files in 'git diff --cached --name-status'
-# (lines starting with 'D')
+# (lines starting with 'D').
 function rejectForbiddenPatterns ()
 {
     git diff --cached --name-status | \
-    grep -E "${D_FILES}" | \
-    egrep -v '^D|moss-vendor|moss-core/source/moss/core/logging.d' | \
-    xargs gawk -- '
+        grep -E "${D_FILES}" | \
+        grep -Ev '^D|moss-vendor|moss-core/source/moss/core/logging.d' | \
+        sed -e 's/^[[:alpha:]][[:space:]]*//g' | \
+        xargs gawk -- '
 # we need this for exit status
 BEGIN { matches = 0 }
 
@@ -80,7 +82,8 @@ BEGIN { matches = 0 }
 # only match lines that are not commented out (we use 4 space indents)
 # each line of Dlang code is matched against all the patterns below in the order listed
 
-# disallow writeln and writefln (use debug/info from std.experimental.logger interface instead)
+# disallow writeln and writefln (use trace/info/warning etc.
+# from std.experimental.logger interface instead)
 /^[ ]*write(f|)ln/ { print FILENAME ":" FNR ":" $0 ; matches += 1 }
 
 # disallow buildPath (use .joiner instead)
