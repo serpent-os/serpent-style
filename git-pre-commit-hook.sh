@@ -64,10 +64,14 @@ function checkForTools ()
     fi
 }
 
+# Ignore logging code, since it needs to be able to write{f,}ln
+# and ignore deleted files in 'git diff --cached --name-status'
+# (lines starting with 'D')
 function rejectForbiddenPatterns ()
 {
-    git diff --cached --name-only | \
-    grep -E "${D_FILES}" |grep -v moss-vendor | \
+    git diff --cached --name-status | \
+    grep -E "${D_FILES}" | \
+    egrep -v '^D|moss-vendor|moss-core/source/moss/core/logging.d' | \
     xargs gawk -- '
 # we need this for exit status
 BEGIN { matches = 0 }
@@ -79,7 +83,7 @@ BEGIN { matches = 0 }
 # disallow writeln and writefln (use debug/info from std.experimental.logger interface instead)
 /^[ ]*write(f|)ln/ { print FILENAME ":" FNR ":" $0 ; matches += 1 }
 
-# disallow buildPath (use join instead)
+# disallow buildPath (use .joiner instead)
 /^[ ]*buildPath/ { print FILENAME ":" FNR ":" $0 ; matches += 1 }
 
 # exit 1 on illegal patterns found
