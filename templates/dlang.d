@@ -17,3 +17,6 @@
  */
 
 module FIXME;
+
+/* PLEASE use the trace/info levels instead of writeln/writefln !!! */
+import std.experimental.logger;
