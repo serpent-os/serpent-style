@@ -1,4 +1,8 @@
-/* SPDX-License-Identifier: Zlib */
+/*
+ * SPDX-FileCopyrightText: Copyright © 2020-2022 Serpent OS Developers
+ *
+ * SPDX-License-Identifier: Zlib
+ */
 
 /**
  * Module Name (use e.g. 'moss.core.foo.bar')
@@ -11,4 +15,5 @@
  * Authors: Copyright © 2020-2022 Serpent OS Developers
  * License: Zlib
  */
+
 module FIXME;
