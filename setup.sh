@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 #
-# Copyright © 2021-2022 Serpent OS Developers
+# SPDX-FileCopyrightText: Copyright © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
 #
 set -e
 
-CopyFiles=("LICENSE")
-DeprecatedFiles=("scripts/update_format.sh")
+DeprecatedFiles=("scripts/update_format.sh", "LICENSE")
 LinkFiles=(".editorconfig" "dscanner.ini")
 NukedAny=0
 
@@ -16,8 +17,7 @@ function failMsg()
 }
 
 [[ -z $(git status --untracked-files=no --porcelain .) ]] || failMsg "Ensure git tree is clean before running this script"
-test -e .git || failMsg "Please run from the root of a git project"
-
+test -e .git || failMsg "Please run from the root of a Serpent OS git project"
 
 # Deprecate old scripts
 for depr in ${DeprecatedFiles[@]}; do
@@ -38,10 +38,9 @@ for link in ${LinkFiles[@]}; do
     ln -svf "serpent-style/${link}" "."
 done
 
-# Forcibly copy the files in
-for file in ${CopyFiles[@]}; do
-    cp -vf "serpent-style/${file}" "."
-done
+# Add REUSE-compatible license directory
+mkdir -pv ./LICENSES/
+cp -vf serpent-style/LICENSES/Zlib.txt ./LICENSES/
 
 # Link pre-commit hook in (using -r avoids dangling symlink)
 if [[ ! -d .git/hooks ]]; then

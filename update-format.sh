@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 #
-# Copyright © 2021 Serpent OS developers
+# SPDX-FileCopyrightText: Copyright © 2020-2022 Serpent OS Developers
+#
+# SPDX-License-Identifier: Zlib
 #
 
 function noisyFail ()

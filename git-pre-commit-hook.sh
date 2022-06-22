@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 #
-# SPDX-License-Identifier: Zlib
+# SPDX-FileCopyrightText: Copyright © 2020-2022 Serpent OS Developers
 #
-# Copyright: © 2020-2022 Serpent OS Developers
-
+# SPDX-License-Identifier: Zlib
 #
 # Git pre-commit hook for serpent-style'd projects.
 #
