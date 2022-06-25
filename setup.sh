@@ -41,6 +41,7 @@ done
 # Add REUSE-compatible license directory
 mkdir -pv ./LICENSES/
 cp -vf serpent-style/LICENSES/Zlib.txt ./LICENSES/
+git add LICENSES/
 
 # Link pre-commit hook in (using -r avoids dangling symlink)
 if [[ ! -d .git/hooks ]]; then
@@ -48,4 +49,6 @@ if [[ ! -d .git/hooks ]]; then
 fi
 ln -rsvf serpent-style/git-pre-commit-hook.sh .git/hooks/pre-commit
 
-echo "Make sure to 'git add' any new links/files added by serpent-style/ and commit them"
+git status
+
+echo e"\nPlease 'git add' any new links/files added by serpent-style/ and commit them.\n"
