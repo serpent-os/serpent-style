@@ -51,4 +51,4 @@ ln -rsvf serpent-style/git-pre-commit-hook.sh .git/hooks/pre-commit
 
 git status
 
-echo e"\nPlease 'git add' any new links/files added by serpent-style/ and commit them.\n"
+echo -e "\nPlease 'git add' any new links/files added by serpent-style/ and commit them.\n"
