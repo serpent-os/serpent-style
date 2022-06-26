@@ -85,7 +85,10 @@ BEGIN { matches = 0 }
 # from std.experimental.logger interface instead)
 /^[ ]*write(f|)ln/ { print FILENAME ":" FNR ":" $0 ; matches += 1 }
 
-# disallow buildPath (use .joiner instead)
+# Use trace(format!"string with %s"(substitution)); instead (compile time check)
+/^[ ]*(log|trace|info|warning|error|critical|fatal)f/ { print FILENAME ":" FNR ":" $0 ; matches += 1 }
+
+# disallow buildPath (use .join instead)
 /^[ ]*buildPath/ { print FILENAME ":" FNR ":" $0 ; matches += 1 }
 
 # exit 1 on illegal patterns found
