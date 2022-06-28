@@ -71,7 +71,7 @@ function rejectForbiddenPatterns ()
 {
     git diff --cached --name-status | \
         grep -E "${D_FILES}" | \
-        grep -Ev '^D|moss-vendor|moss-core/source/moss/core/logger.d|cli/version_cmd' | \
+        grep -Ev '^D|moss-vendor|moss-core/source/moss/core/logger.d|cli/version_command' | \
         sed -e 's/^[[:alpha:]][[:space:]]*//g' | \
         xargs gawk -- '
 # we need this for exit status
