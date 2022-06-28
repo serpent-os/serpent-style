@@ -64,14 +64,14 @@ function checkForTools ()
     fi
 }
 
-# Ignore logging code, since it needs to be able to write{f,}ln
+# Ignore logging code and version_cmd, since both need to be able to write{f,}ln
 # and ignore deleted files in 'git diff --cached --name-status'
 # (lines starting with 'D').
 function rejectForbiddenPatterns ()
 {
     git diff --cached --name-status | \
         grep -E "${D_FILES}" | \
-        grep -Ev '^D|moss-vendor|moss-core/source/moss/core/logging.d' | \
+        grep -Ev '^D|moss-vendor|moss-core/source/moss/core/logger.d|cli/version_cmd' | \
         sed -e 's/^[[:alpha:]][[:space:]]*//g' | \
         xargs gawk -- '
 # we need this for exit status
