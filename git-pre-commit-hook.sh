@@ -73,7 +73,7 @@ function rejectForbiddenPatterns ()
 {
     git diff --cached --name-only --diff-filter=d | \
         grep -E "${D_FILES}" | \
-        grep -Ev '^moss-vendor' | \
+        grep -Ev '^vendor' | \
         xargs gawk -- '
 # we need this for exit status
 BEGIN { matches = 0; }
