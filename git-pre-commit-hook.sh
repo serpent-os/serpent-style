@@ -103,7 +103,7 @@ function error(msg) {
 
 # buildPath has been shown to be slow
 /^[ ]*buildPath/ {
-    error("Use .join or joinPath instead of buildPath (speedup)");
+    error("Use moss.core.util.joinPath instead of buildPath (speedup)");
 }
 
 # exit 1 on illegal patterns found
