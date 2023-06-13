@@ -72,3 +72,7 @@ The expected format is as follows:
 
 // double-slash comments are only used to flag FIXME/TODO/etc. comments and are generally frowned upon.
 ```
+
+## Copyright template maintenance
+
+This example appears to work well: `rg -l 2022 |xargs sed -i 's/2022/2023/g'`
