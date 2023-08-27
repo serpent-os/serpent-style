@@ -40,7 +40,7 @@ done
 
 # Add REUSE-compatible license directory
 mkdir -pv ./LICENSES/
-cp -vf serpent-style/LICENSES/Zlib.txt ./LICENSES/
+cp -vf serpent-style/LICENSES/MPL-2.0.txt ./LICENSES/
 git add LICENSES/
 
 # Link pre-commit hook in (using -r avoids dangling symlink)

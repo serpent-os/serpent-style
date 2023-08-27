@@ -1,7 +1,7 @@
 /*
  * SPDX-FileCopyrightText: Copyright © 2020-2023 Serpent OS Developers
  *
- * SPDX-License-Identifier: Zlib
+ * SPDX-License-Identifier: MPL-2.0
  */
 
 /**
@@ -13,7 +13,7 @@
  * 'Module namespace imports.' is sufficient description.
  *
  * Authors: Copyright © 2020-2023 Serpent OS Developers
- * License: Zlib
+ * License: MPL-2.0
  */
 
 module FIXME;
