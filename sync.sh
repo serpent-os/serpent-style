@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: Zlib
 #
 # serpent-style/sync.sh syncs the git repo from which it is run to the newest
-# serpent-style/ submodule and commmits with the message:
+# serpent-style/ submodule and commits with the message:
 #
 # "serpent-style: Sync"
 set -e

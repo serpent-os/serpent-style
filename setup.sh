@@ -29,7 +29,7 @@ for depr in ${DeprecatedFiles[@]}; do
 done
 
 if [[ "${NukedAny}" == "1" ]]; then
-    echo "Commiting changes..."
+    echo "Committing changes..."
     git commit -S -s -m "serpent-style: Remove deprecated assets"
 fi
 

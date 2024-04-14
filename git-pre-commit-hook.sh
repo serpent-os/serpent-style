@@ -66,7 +66,7 @@ function checkForTools ()
 
 # Ignore vendor code, since we only aim to consume it
 #
-# Alse ignore deleted files in 'git diff --cached --name-only' by adding
+# Else ignore deleted files in 'git diff --cached --name-only' by adding
 # '--diff-filter=d'
 #
 function rejectForbiddenPatterns ()
